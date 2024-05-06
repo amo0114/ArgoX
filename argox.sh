@@ -1277,24 +1277,24 @@ trojan://${UUID}@${SERVER}:443?security=tls&sni=${ARGO_DOMAIN}&type=ws&host=${AR
   [ "$IS_NGINX" = 'is_nginx' ] && cat > $WORK_DIR/subscribe/qr << EOF
 $(text 66):
 $(text 67) 1:
-https://${ARGO_DOMAIN}/${UUID}/amo
+https://${ARGO_DOMAIN}/${UUID}/auto
 
 $(text 67) 2:
-https://${ARGO_DOMAIN}/${UUID}/amo1
+https://${ARGO_DOMAIN}/${UUID}/auto2
 
 $(text 67) 1:
 $(text 64) QRcode:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto
 
 $(text 67) 2:
 $(text 64) QRcode:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo1
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto2
 
 $(text 67) 1:
-$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/amo")
+$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/auto")
 
 $(text 67) 2:
-$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/amo1")
+$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/auto2")
 EOF
 
   # 生成客户端配置文件
@@ -1371,23 +1371,23 @@ https://${ARGO_DOMAIN}/${UUID}/shadowrocket")
 
 $(hint " $(text 66):
 $(text 67) 1:
-https://${ARGO_DOMAIN}/${UUID}/amo
+https://${ARGO_DOMAIN}/${UUID}/auto
 
 $(text 67) 2:
-https://${ARGO_DOMAIN}/${UUID}/amo1
+https://${ARGO_DOMAIN}/${UUID}/auto2
 
  $(text 64) QRcode:
 $(text 67) 1:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto
 
 $(text 67) 2:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo1")
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto2")
 
 $(hint "$(text 67) 1:")
-$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/amo)
+$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/auto)
 
 $(hint "$(text 67) 2:")
-$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/amo1)
+$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/auto2)
 "
 
 EXPORT_LIST_FILE+="

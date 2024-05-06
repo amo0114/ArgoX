@@ -9,9 +9,9 @@ WORK_DIR='/etc/argox'
 TEMP_DIR='/tmp/argox'
 TLS_SERVER=addons.mozilla.org
 METRICS_PORT='3333'
-CDN_DOMAIN=("cn.azhz.eu.org" "www.who.int" "skk.moe" "time.cloudflare.com" "csgo.com")
+CDN_DOMAIN=("cn.azhz.eu.org" "www.who.int" "skk.moe" "time.cloudflare.com" "csgo.com" "sg.moyuan.bf")
 SUBSCRIBE_TEMPLATE="https://raw.githubusercontent.com/fscarmen/client_template/main"
-SUBSCRIBE_API=("bav6.889876.xyz" "api.v1.mk")
+SUBSCRIBE_API=("bav6.889876.xyz" "api.v1.mk" "dingyue.moyuan.bf")
 
 trap "rm -rf $TEMP_DIR; echo -e '\n' ;exit 1" INT QUIT TERM EXIT
 
@@ -182,7 +182,7 @@ check_chatgpt() {
 
 # 脚本当天及累计运行次数统计
 statistics_of_run-times() {
-  local COUNT=$(wget --no-check-certificate -qO- --tries=2 --timeout=2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://raw.githubusercontent.com/fscarmen/ArgoX/main/argox.sh" 2>&1 | grep -m1 -oE "[0-9]+[ ]+/[ ]+[0-9]+") &&
+  local COUNT=$(wget --no-check-certificate -qO- --tries=2 --timeout=2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://raw.githubusercontent.com/amo0114/ArgoX/main/argox.sh" 2>&1 | grep -m1 -oE "[0-9]+[ ]+/[ ]+[0-9]+") &&
   TODAY=$(cut -d " " -f1 <<< "$COUNT") &&
   TOTAL=$(cut -d " " -f3 <<< "$COUNT")
 }
@@ -1277,24 +1277,24 @@ trojan://${UUID}@${SERVER}:443?security=tls&sni=${ARGO_DOMAIN}&type=ws&host=${AR
   [ "$IS_NGINX" = 'is_nginx' ] && cat > $WORK_DIR/subscribe/qr << EOF
 $(text 66):
 $(text 67) 1:
-https://${ARGO_DOMAIN}/${UUID}/auto
+https://${ARGO_DOMAIN}/${UUID}/amo
 
 $(text 67) 2:
-https://${ARGO_DOMAIN}/${UUID}/auto2
+https://${ARGO_DOMAIN}/${UUID}/amo1
 
 $(text 67) 1:
 $(text 64) QRcode:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo
 
 $(text 67) 2:
 $(text 64) QRcode:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto2
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo1
 
 $(text 67) 1:
-$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/auto")
+$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/amo")
 
 $(text 67) 2:
-$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/auto2")
+$($WORK_DIR/qrencode "https://${ARGO_DOMAIN}/${UUID}/amo1")
 EOF
 
   # 生成客户端配置文件
@@ -1371,23 +1371,23 @@ https://${ARGO_DOMAIN}/${UUID}/shadowrocket")
 
 $(hint " $(text 66):
 $(text 67) 1:
-https://${ARGO_DOMAIN}/${UUID}/auto
+https://${ARGO_DOMAIN}/${UUID}/amo
 
 $(text 67) 2:
-https://${ARGO_DOMAIN}/${UUID}/auto2
+https://${ARGO_DOMAIN}/${UUID}/amo1
 
  $(text 64) QRcode:
 $(text 67) 1:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo
 
 $(text 67) 2:
-https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/auto2")
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://${ARGO_DOMAIN}/${UUID}/amo1")
 
 $(hint "$(text 67) 1:")
-$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/auto)
+$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/amo)
 
 $(hint "$(text 67) 2:")
-$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/auto2)
+$($WORK_DIR/qrencode https://${ARGO_DOMAIN}/${UUID}/amo1)
 "
 
 EXPORT_LIST_FILE+="
